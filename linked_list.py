@@ -1,11 +1,12 @@
 class Node:
-    def __init__(self, data = None) -> None:
+    def __init__(self, data=None) -> None:
         self.data = data
         self.next = None
 
     def __str__(self) -> str:
         return f"<{self.data}>"
-    
+
+
 class LinkedList:
     def __init__(self) -> None:
         self.head = None
@@ -13,19 +14,20 @@ class LinkedList:
     def __len__(self) -> int:
         ptr = self.head
         counter: int = 0
-        
+
         while ptr != None:
             ptr = ptr.next
             counter += 1
-        
+
         return counter
-    
+
     def __str__(self) -> str:
         ptr = self.head
         list_str: str = ""
 
         while ptr != None:
-            list_str += str(ptr.data) + "-->" if ptr.next != None else str(ptr.data)
+            list_str += str(ptr.data) + \
+                "-->" if ptr.next != None else str(ptr.data)
             ptr = ptr.next
 
         return list_str
@@ -33,7 +35,7 @@ class LinkedList:
     def insert_at_beg(self, data) -> None:
         if self.head is None:
             self.head = Node(data)
-        
+
         else:
             start_node = Node(data)
             start_node.next = self.head
@@ -42,7 +44,7 @@ class LinkedList:
     def insert(self, index: int, data) -> None:
         if index < 0 or index > len(self):
             raise IndexError
-        
+
         else:
             node = Node(data)
             ptr = self.head
@@ -66,8 +68,7 @@ class LinkedList:
             ptr = ptr.next
 
         ptr.next = ptr.next.next
-        
-    
+
 
 if __name__ == '__main__':
     l = LinkedList()
