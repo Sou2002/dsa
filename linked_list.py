@@ -45,6 +45,9 @@ class LinkedList:
         if index < 0 or index > len(self):
             raise IndexError
 
+        elif index == 0:
+            self.insert_at_beg(data)
+
         else:
             node = Node(data)
             ptr = self.head
@@ -59,15 +62,26 @@ class LinkedList:
         self.insert(len(self), data)
 
     def remove_beg(self) -> None:
-        self.head = self.head.next
+        if self.head is None:
+            print("Linked List is empty!")
+            
+        else:
+            self.head = self.head.next
 
     def remove(self, index: int) -> None:
-        ptr = self.head
+        if index < 0 or index > len(self):
+            raise IndexError
 
-        for _ in range(index - 1):
-            ptr = ptr.next
+        elif index == 0:
+            self.remove_beg()
 
-        ptr.next = ptr.next.next
+        else:
+            ptr = self.head
+
+            for _ in range(index - 1):
+                ptr = ptr.next
+
+            ptr.next = ptr.next.next
 
 
 if __name__ == '__main__':
