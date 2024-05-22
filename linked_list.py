@@ -15,7 +15,7 @@ class LinkedList:
         ptr = self.head
         counter: int = 0
 
-        while ptr != None:
+        while ptr:
             ptr = ptr.next
             counter += 1
 
@@ -25,9 +25,9 @@ class LinkedList:
         ptr = self.head
         list_str: str = ""
 
-        while ptr != None:
+        while ptr:
             list_str += str(ptr.data) + \
-                "-->" if ptr.next != None else str(ptr.data)
+                "-->" if ptr.next else str(ptr.data)
             ptr = ptr.next
 
         return list_str
@@ -49,14 +49,14 @@ class LinkedList:
             self.insert_at_beg(data)
 
         else:
-            node = Node(data)
+            new_node = Node(data)
             ptr = self.head
 
             for _ in range(index - 1):
                 ptr = ptr.next
 
-            node.next = ptr.next
-            ptr.next = node
+            new_node.next = ptr.next
+            ptr.next = new_node
 
     def append(self, data) -> None:
         self.insert(len(self), data)
