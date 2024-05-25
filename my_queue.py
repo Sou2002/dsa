@@ -33,12 +33,14 @@ class Queue:
             self.tail.next = new_node
             self.tail = new_node
 
-    def dequeue(self) -> None:
+    def dequeue(self):
         if self.head is None:
             print("Queue is empty!")
 
         else:
+            dequeued_element = self.head.data
             self.head = self.head.next
+            return dequeued_element
 
 
 if __name__ == '__main__':
