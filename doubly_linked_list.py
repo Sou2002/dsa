@@ -89,8 +89,13 @@ class DoublyLinkedList:
             for _ in range(index - 1):
                 ptr = ptr.next
 
-            ptr.next = ptr.next.next
-            ptr.next.prev = ptr
+            if ptr.next.next is None:
+                ptr.next.prev = None
+                ptr.next = None
+
+            else:
+                ptr.next = ptr.next.next
+                ptr.next.prev = ptr
 
 
 if __name__ == '__main__':
@@ -105,7 +110,7 @@ if __name__ == '__main__':
     l.append(40)
     print(l)
 
-    l.remove(2)
+    l.remove(3)
     print(l)
 
     l.remove_beg()
