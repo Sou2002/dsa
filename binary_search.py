@@ -4,7 +4,7 @@ def binary_search(my_list: list[int], val: int, left_index: int, right_index: in
     if left_index > right_index:
         return -1
 
-    mid_index = (left_index + right_index) // 2
+    mid_index: int = (left_index + right_index) // 2
 
     if my_list[mid_index] == val:
         return mid_index
